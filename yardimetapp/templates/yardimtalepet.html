@@ -1,0 +1,69 @@
+{% extends 'basic.html  ' %}
+{% load static %}
+
+{% block icerik %}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4>Yardım Talep Girişi</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'yardimtalepet' %}" method="POST" enctype="multipart/form-data" >
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="baslik">Yardım talebi başlığı :  </label>
+                            <select class="custom-select" id="inputGroupSelect02" name="baslik" required>
+                                <option selected>Yardım sebebi seçiniz..</option>
+                                <option value="Erzak yardım talebi">Erzak yardım talebi</option>
+                                <option value="Nakit yardım talebi">Nakit yardım talebi</option>
+                                <option value="Giysi yardım talebi">Giysi yardım talebi</option>
+                                <option value="Fatura ödeme yardım talebi">Fatura ödeme yardım talebi</option>
+                                <option value="Burs yardım talebi">Burs yardım talebi</option>
+                              </select>
+                        </div> 
+                        <div class="form-group">
+                            <label for="aciklama">Açıklama :</label>
+                            <textarea class="form-control" name="aciklama" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                        </div> 
+                        <div class="form-group">
+                            <label for="adres">Adres :</label>
+                            <textarea class="form-control" name="adres" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                        </div> 
+                        <div class="form-group">
+                            <label for="telefon">Telefon :</label>
+                            <input type="tel" name="telefon"  class="form-control" placeholder="5315555555" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required >
+                        </div> 
+                        
+
+                            <input type="hidden" name="userid"  class="form-control" value="{{ user.id }}" required >
+                            <input type="hidden" name="userfirst"  class="form-control" value="{{ user.first_name }}" required >
+                            <input type="hidden" name="userlast"  class="form-control" value="{{ user.last_name }}" required >
+                            <input type="hidden" name="usermail"  class="form-control" value="{{ user.email }}" required >
+                        
+                            <div class="form-group">
+                              <label for="resim">Yardım ile alakalı resim yükleyiniz.</label>
+                              <input type="file" name="resim" class="form-control-file" id="resim" required>
+                            </div>
+                        
+
+                        <button type="submit" class="btn btn-primary ">Kayıt</button>
+
+
+
+                    </form>
+
+
+
+                </div>
+        
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+{% endblock%}

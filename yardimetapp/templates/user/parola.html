@@ -1,0 +1,37 @@
+{% extends 'basic.html  ' %}
+{% load static %}
+
+{% block icerik %}
+
+
+<div class="row">
+  <div class="col-md-4 mx-auto">
+      <div class="card">
+          <div class="card-header bg-primary text-white">
+              <h4>Parola Değiştirme</h4>
+          </div>
+          <div class="card-body">
+              <form action="{% url 'parola' %}" method="POST">
+                  {% csrf_token %}
+
+                  <div class="form-group">
+                      <label for="yeni">Yeni Şifre :</label>
+                      <input type="password" name="yeni"  class="form-control" required >
+                  </div> 
+                  <div class="form-group">
+                      <label for="ryeni">Yeni Şifre Tekrar :</label>
+                      <input type="password" name="ryeni"  class="form-control" required >
+                  </div> 
+                  <input type="hidden" name="userid" value="{{ user.id }}" required>
+
+                  <button type="submit" class="btn btn-primary ">Kayıt</button> 
+              </form>
+                
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

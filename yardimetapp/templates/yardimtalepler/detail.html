@@ -1,0 +1,57 @@
+{% extends 'basic.html  ' %}
+{% load static %}
+
+{% block icerik %}
+
+    <div class="row" style="border-style: solid; border-color:gray; border-width:1px;margin-top: 3em;margin-bottom: 3em;">
+        <div class="col-md-3" style="margin-top:1em;margin-bottom:1em;">
+            <img class="card-img img-responsive" src="{{ yardimlar.resim.url }}" alt="" style="float: left;"  >
+        </div>
+        <div class="col-md-9">
+                <h3><b>Konu :</b> {{ yardimlar.baslik}}</h3>
+                <hr>
+                <p>
+                    <b>Talep edenin  Adı Soyadı :</b> {{ yardimlar.u_firstname }} {{ yardimlar.u_lastname }}
+
+                </p>
+                <p>
+                    <b>Talep Açıklaması :</b>  {{ yardimlar.aciklama}}
+
+                </p>
+                <p>
+                    <b>Talep edenin  Adresi :</b> {{ yardimlar.adres}}
+
+                </p>
+                <p>
+                    <b>Talep edenin Telefonu :</b> {{ yardimlar.telefon}}
+
+                </p>
+                <p>
+                    <b>Talep edenin Maili :</b> {{ yardimlar.u_email }}
+
+                </p>
+                <p>
+                    <b style="color: red;">Yardım talebini karşılamayacaksanız eğer Lütfen butona basmayınız. </b>
+                        <b style="color: red;">   Eğer butona basarsanız. Kişinin yardım talebi pasif durumuna düşecektir.
+                    </b>
+
+                </p>
+                <p class="card-text" style="float: left;">
+                    <small class="text-muted"><b>Yardım Talep Tarihi :</b> {{ yardimlar.zaman | timesince }} Önce</small>
+            </p>
+
+                <p class="card-text">                
+                <!--<a href="javascript:{document.getElementById('yardimonay').submit()}"  class="nav-link"><h5 style="color:orange;">Kişiye yardım etmek için tıkla.</h5>-->
+                    <form action="{% url 'detail' yardimlar.id %}" method="POST" id="yardimonay">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-primary" >  Yardım talebini karşılayacağım. </button>
+
+                      <input type="hidden">
+                    </form>
+                  </a>
+                </p>
+
+        </div>
+    </div>
+
+{% endblock %}

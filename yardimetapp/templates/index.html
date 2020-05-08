@@ -1,0 +1,27 @@
+{% extends 'basic.html  ' %}
+{% load static %}
+
+{% block icerik %}
+       
+<div class="card">
+        <div class="card-body">
+                <h1> YardımEt.com Açıklama </h1>
+          <hr>
+          Merhaba,
+
+          <p>Girmiş olduğunuz site tamamen kar amacı gütmeden yapılmıştır.</p>
+
+          <p>Amacımız yardıma ihtiyacı olanla yardım etmek isteyen gönüllüleri bir araya getirmektedir.</p>
+
+          <p>Bu site aracılığıyla amacımız tamamen yardıma ihyitacı olan ile yardım etmek isteyen arasında köprü olmaktır.</p>
+
+          <p>Her şeyin kötü olduğu bu düzende bir nebzede olsa yardıma ihtiyacı olanların yardımlarını çözersek ne mutlu bize.</p>
+
+          <p>
+
+                <a href="#" class="nav-link">Yardım talep et</a>   ya da  <a href="{% url 'yardimtalepler' %}" class="nav-link">Yardım et</a>
+          </p>
+        </div>
+      </div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'basic.html  ' %}
+{% load static %}
+
+{% block icerik %}
+
+
+<div class="row" style="border-style: solid; border-color:gray; border-width:1px;margin-top: 3em;margin-bottom: 3em;">
+    <div class="col-md-3" style="margin-top:1em;margin-bottom:1em;">
+        <img class="card-img-top" src="{% static 'img/profil.png' %}"  style="float:left;"  >
+    </div>
+       <div class="col-md-9">
+            <h3 style="color: #004da8;"><b>Profil Detayları</b> </h3>
+            <hr>
+            <p>
+                <b>Username  :</b> {{ user.username }}
+
+            </p>
+            <p>
+                <b>Ad  :</b>  {{ user.first_name}}
+
+            </p>
+            <p>
+                <b>Soyad  :</b>  {{ user.last_name}}
+            </p>
+            <p>
+                <b>Mail  :</b>  {{ user.email}}
+
+            </p>
+            <p>
+                <b>Son girişiniz :</b> {{ user.last_login }}
+
+            </p>
+            <p>
+                
+              
+            </p>
+            <li class="nav-link">
+                <a href="javascript:{document.getElementById('hesapyardimlar').submit()}" class="nav-link">Yaptığın yardım talepleri için tıkla  </a>
+                <form action="{% url 'hesapyardimlar' %}" method="POST" id="hesapyardimlar">
+                  {% csrf_token %}
+                  <input type="hidden" name="userid" value="{{ user.id }}" required>
+                </form>
+            </li>
+           
+
+       </div>
+</div>
+
+
+
+{% endblock %}

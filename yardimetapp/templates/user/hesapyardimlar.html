@@ -1,0 +1,65 @@
+{% extends 'basic.html  ' %}
+{% load static %}
+{% load humanize %}
+
+{% block icerik %}
+       
+        <div class="card "  ><center> 
+
+                <div class="col-md-11" style="margin-top: 3em;margin-bottom: 3em;">
+                    <h3 style="color: #004da8;"><b>Yaptığınız Yardım Talepleri</b></h3>
+                    <hr>
+                    {% if yardimlar %}
+                        {% for yardimlar in yardimlar %}
+                            <div class="card mb-3">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <img class="card-img img-responsive" src="{{ yardimlar.resim.url }}" alt="" style="margin-top:1em;margin-bottom:1em;margin-left:1em;"  >
+                                     </div>
+                                <div class="col-md-9">
+                                        <div class="card-body">
+                                                <div class="card-title" >Yardim No : {{ yardimlar.id }} | Yardım Talebi : {{ yardimlar.baslik }}</div>
+                                                <p class="card-text" >
+                                                    Yardım Açıklaması : {{ yardimlar.aciklama }}   
+                                                </p>
+                                           
+                                                <p class="card-text" >
+                                                        <small class="text-muted">Yardım Talep Tarihi : {{ yardimlar.zaman | timesince }} Önce</small>
+                                                </p>
+                                                {% if yardimlar.durum == 1 %}
+                                                    <p class="card-text" >
+                                                    <small class="text-muted">Yardım Durumu : Aktif </small>
+                                                     </p>
+
+                                                {% else %}
+                                                    <p class="card-text" >
+                                                <small class="text-muted">Yardım Durumu : Pasif </small>
+                                                 </p>
+                                                {% endif %}
+ 
+                                        </div>
+                                </div>
+                        </div>
+                            </div>
+                            
+                        {% endfor %}
+                    {% else %}
+                        <div class="alert alert-warning">
+                            <p>
+                                Malesef yapabileceğin yardım talebi yok.
+                            </p>
+
+                        </div>
+
+
+
+                    {% endif %}
+
+
+                        
+                </div>
+
+        </center>
+        </div>
+
+{% endblock %}
